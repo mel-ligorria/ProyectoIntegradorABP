@@ -1,12 +1,56 @@
-# React + Vite
+# Proyecto Integrdor ABP- ISPC
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Proyecto React + Axios + Tailwind
 
-Currently, two official plugins are available:
+Este proyecto tiene como objetivo reforzar conceptos fundamentales de **React**, consumir datos desde una API externa usando **Axios**, implementar una funcionalidad de búsqueda, y mejorar la experiencia visual mediante **Tailwind CSS** y una correcta **componentización**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🗓️ Semana 1 – React + Axios + Búsqueda
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Objetivo
+
+- Consolidar los fundamentos de React: estado, props, efectos.
+- Consumir la API de DummyJSON con Axios.
+- Implementar una búsqueda dinámica de productos.
+
+### Tareas Realizadas
+
+- Partimos de un proyecto base en React.
+- Obtenemos 100 productos desde la API: [https://dummyjson.com/products?limit=100](https://dummyjson.com/products?limit=100).
+- Mostramos una **lista de productos** con su **nombre** y **precio**.
+- Implementamos un **input de búsqueda** para filtrar los productos.
+- Se muestra un **mensaje si no hay coincidencias** con la búsqueda.
+- Agregamos un **botón** para mostrar u ocultar estadísticas (por ejemplo, promedio de precios, cantidad total de productos, etc.).
+
+---
+
+## 🗓️ Semana 2 – Tailwind CSS + Componentización
+
+### Objetivo
+
+- Estilizar la aplicación utilizando Tailwind CSS.
+- Mejorar la estructura del proyecto dividiéndolo en componentes reutilizables.
+
+### Tareas Realizadas
+
+- Configuramos **Tailwind CSS** en el proyecto React.
+- Se crearon y utilizaron los siguientes componentes:
+  - `ProductList` – Renderiza la lista completa de productos.
+  - `ProductItem` – Muestra la información de cada producto individual.
+  - `StatsPanel` – Muestra estadísticas dinámicas de los productos.
+  - `SearchBar` – Input de búsqueda con control del estado.
+- # Componentes Adicionales (Tailblocks)
+Se agregaron dos componentes nuevos utilizando bloques de Tailblocks para mejorar la interfaz de usuario:
+  - `Hero` – Sección principal de bienvenida con un llamado a la acción.
+  - `Footer` – Pie de página con enlaces y créditos.
+
+- Aplicamos **estilos responsivos** con clases utilitarias de Tailwind.
+- Implementamos **modo oscuro** usando `useRef` para cambiar clases dinámicamente.
+
+
+## Tecnologías Usadas
+
+- React
+- Axios
+- Tailwind CSS

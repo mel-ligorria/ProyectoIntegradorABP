@@ -6,7 +6,7 @@ function Hero() {
           Proyecto Integrador
         </h1>
         <p className="mb-8 leading-relaxed text-center text-gray-600">
-          Descubrí productos, filtralos y analizá información útil. Este proyecto muestra el uso de React, TailwindCSS y llamadas a APIs.
+          Descubrí productos, filtralos y analizalos para encontrar lo que más te gusta.
         </p>
       </div>
     </section>
