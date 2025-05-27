@@ -1,0 +1,58 @@
+.app {
+  min-height: 100vh;
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+button {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 4px;
+}
+
+.app.dark-mode button {
+  background-color: #333;
+  color: #eee;
+  border-color: #eee;
+}
+
+input {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark-mode input {
+  background-color: #222;
+  color: #eee;
+  border-color: #555;
+}
+
+/* Evitar clases como bg-gray-100 que fijen fondo claro en tus divs, o sobreescribilas: */
+.content {
+  background-color: inherit;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Otros estilos para texto, links, etc, si tenés */
+a {
+  color: blue;
+  transition: color 0.3s ease;
+}
+
+.app.dark-mode a {
+  color: #bb86fc;
+}
