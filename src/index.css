@@ -56,3 +56,28 @@ a {
 .app.dark-mode a {
   color: #bb86fc;
 }
+
+.hero.dark-mode {
+  background-color: #222;
+  color: #eee;
+}
+
+footer.dark-mode {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+.dark-mode .product-card {
+  background-color: #1e1e1e !important;
+  color: #e0e0e0 !important;
+}
+
+.dark-mode .product-price {
+  color: #80e27e !important;
+}
+
+.app.dark-mode {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
+

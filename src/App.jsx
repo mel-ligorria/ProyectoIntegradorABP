@@ -30,14 +30,14 @@ const containerRef = useRef(null);
   //Función adicional para boton modo oscuro
   const toggleDarkMode = () => {
   setDarkMode(!darkMode);
-  containerRef.current.classList.toggle("dark-mode");
+  containerRef.current.classList.toggle.add("dark-mode");
 };
 
   return (
 <div ref={containerRef} className={`app ${darkMode ? " dark-mode" : ""}`}>
   <button onClick={toggleDarkMode}>Modo oscuro</button>
 
-  <Hero/>
+  <Hero darkMode={darkMode} />
   <div className="content py-8 px-4 min-h-screen">
     <div className="max-w-4xl mx-auto">
       <input
@@ -50,13 +50,13 @@ const containerRef = useRef(null);
       {filteredProducts.length === 0 ? (
         <p className="text-center text-red-600">No se encontraron productos.</p>
       ) : (
-        <ProductList products={filteredProducts} />
+        <ProductList products={filteredProducts} darkMode={darkMode} />
       )}
     </div>
   </div>
 
-  <InfoSection />
-  <Footer />
+  <InfoSection darkMode={darkMode}  />
+  <Footer  darkMode={darkMode} />
 </div>
 
   );
