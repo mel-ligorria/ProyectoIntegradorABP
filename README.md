@@ -40,13 +40,32 @@ Este proyecto tiene como objetivo reforzar conceptos fundamentales de **React**,
   - `ProductItem` – Muestra la información de cada producto individual.
   - `StatsPanel` – Muestra estadísticas dinámicas de los productos.
   - `SearchBar` – Input de búsqueda con control del estado.
-- # Componentes Adicionales (Tailblocks)
+  
+- ## Componentes Adicionales (Tailblocks)
 Se agregaron dos componentes nuevos utilizando bloques de Tailblocks para mejorar la interfaz de usuario:
   - `Hero` – Sección principal de bienvenida con un llamado a la acción.
   - `Footer` – Pie de página con enlaces y créditos.
 
 - Aplicamos **estilos responsivos** con clases utilitarias de Tailwind.
 - Implementamos **modo oscuro** usando `useRef` para cambiar clases dinámicamente.
+
+
+## 🗓️ Semana 3 – Filtrado Avanzado y Ordenamiento  
+
+### Objetivo  
+- Implementación de **filtros dinámicos** por categoría de los productos.  
+- Agregue **ordenamiento** por precio y rating (ascendente/descendente).  
+- Usamos  **selects** para que el usuario elija filtros y órdenes.  
+- Combine todo con la **búsqueda existente** dentro de `SearchBar.jsx`.  
+
+### Tareas realizadas  
+- **Integración de `SearchBar.jsx`** para manejar la búsqueda, filtro por categoría y ordenamiento.  
+- **Obtención dinámica de categorías** desde la API: [DummyJSON Categories](https://dummyjson.com/products/categories).  
+- **Filtrado de productos** por categoría seleccionada en el select.  
+- **Ordenamiento de productos** por precio y rating en modo ascendente y descendente (`sort()`).  
+- Aplique mejoras en la interfaz:  
+  - Oculte flechas dobles en `select` usando `appearance-none`.  
+  - Mejore la apariencia y estructura de los filtros con `Tailwind CSS`.  
 
 
 ## Tecnologías Usadas
