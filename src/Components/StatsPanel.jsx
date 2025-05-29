@@ -1,83 +1,106 @@
-function StatsPanel({
-  precioPromedio,
-  precioMax,
-  precioMin,
-  cantidadPorCategoria = [],
-  productosStockMayor50,
-  productosRatingAlto,
-  promedioPorCategoria = [],
-  extremosPorCategoria = [],
-  promedioRatingGeneral,
-  ratingPorCategoria = []
-}) {
+import React from 'react';
+
+const StatsPanel = ({ productosFiltrados }) => {
+  if (!productosFiltrados.length) {
+    return <p className="text-center text-gray-600">No hay productos disponibles para calcular estadísticas.</p>;
+  }
+
+  // Cálculos de estadísticas
+  const precios = productosFiltrados.map(product => product.price);
+  const precioPromedio = (precios.reduce((acc, price) => acc + price, 0) / precios.length).toFixed(2);
+  const precioMaximo = Math.max(...precios);
+  const precioMinimo = Math.min(...precios);
+  const productosConStockAlto = productosFiltrados.filter(product => product.stock > 50).length;
+  const productosConRatingAlto = productosFiltrados.filter(product => product.rating > 4.5).length;
+
+  // Cantidad de productos por categoría
+  const cantidadPorCategoria = productosFiltrados.reduce((acc, product) => {
+    acc[product.category] = (acc[product.category] || 0) + 1;
+    return acc;
+  }, {});
+
+  // Precio promedio por categoría
+  const precioPromedioPorCategoria = Object.keys(cantidadPorCategoria).reduce((acc, category) => {
+    const productosDeCategoria = productosFiltrados.filter(product => product.category === category);
+    const promedioCategoria = (
+      productosDeCategoria.reduce((sum, product) => sum + product.price, 0) / productosDeCategoria.length
+    ).toFixed(2);
+    acc[category] = promedioCategoria;
+    return acc;
+  }, {});
+
+  // Producto más caro y más barato por categoría
+  const productoMasCaroPorCategoria = {};
+  const productoMasBaratoPorCategoria = {};
+  
+  productosFiltrados.forEach(product => {
+    if (!productoMasCaroPorCategoria[product.category] || product.price > productoMasCaroPorCategoria[product.category].price) {
+      productoMasCaroPorCategoria[product.category] = product;
+    }
+    if (!productoMasBaratoPorCategoria[product.category] || product.price < productoMasBaratoPorCategoria[product.category].price) {
+      productoMasBaratoPorCategoria[product.category] = product;
+    }
+  });
+
+  // Promedio de rating general
+  const ratingPromedioGeneral = (productosFiltrados.reduce((acc, product) => acc + product.rating, 0) / productosFiltrados.length).toFixed(2);
+
+  // Promedio de rating por categoría
+  const ratingPromedioPorCategoria = {};
+  Object.keys(cantidadPorCategoria).forEach(category => {
+    const productosDeCategoria = productosFiltrados.filter(product => product.category === category);
+    ratingPromedioPorCategoria[category] = (
+      productosDeCategoria.reduce((acc, product) => acc + product.rating, 0) / productosDeCategoria.length
+    ).toFixed(2);
+  });
 
   return (
-    <div className="stats-panel" style={{ display: "block", visibility: "visible", opacity: 1 }}>
-      <h2>Estadísticas Generales</h2>
+    <div className="bg-white p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">📊 Estadísticas</h2>
 
-      <p>Precio Promedio: ${typeof precioPromedio === "number" ? precioPromedio.toFixed(2) : "No disponible"}</p>
-      <p>Precio Máximo: ${typeof precioMax === "number" ? precioMax.toFixed(2) : "No disponible"}</p>
-      <p>Precio Mínimo: ${typeof precioMin === "number" ? precioMin.toFixed(2) : "No disponible"}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Tarjeta de estadísticas generales */}
+        <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+          <h3 className="text-lg font-semibold text-gray-700 mb-2">Datos Generales</h3>
+          <p><strong>Precio Promedio:</strong> ${precioPromedio}</p>
+          <p><strong>Precio Máximo:</strong> ${precioMaximo}</p>
+          <p><strong>Precio Mínimo:</strong> ${precioMinimo}</p>
+          <p><strong>Productos con stock &gt; 50:</strong> {productosConStockAlto}</p>
+          <p><strong>Productos con rating &gt; 4.5:</strong> {productosConRatingAlto}</p>
+        </div>
 
-      <h3>Productos por Categoría:</h3>
-      <ul>
-        {Array.isArray(cantidadPorCategoria) && cantidadPorCategoria.length > 0 ? (
-          cantidadPorCategoria.map((item, index) => (
-            <li key={index}>
-              {item?.categoria}: {item?.cantidad ?? "No disponible"}
-            </li>
-          ))
-        ) : (
-          <li>No hay datos disponibles.</li>
-        )}
-      </ul>
+        {/* Tarjeta de estadísticas por categoría */}
+        <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+          <h3 className="text-lg font-semibold text-gray-700 mb-2">📌 Por Categoría</h3>
+          {Object.entries(cantidadPorCategoria).map(([category, count]) => (
+            <p key={category}><strong>{category}:</strong> {count} productos - Precio Promedio: ${precioPromedioPorCategoria[category]}</p>
+          ))}
+        </div>
+      </div>
 
-      <p>Productos con Stock {">"} 50: {typeof productosStockMayor50 === "number" ? productosStockMayor50 : "No disponible"}</p>
-      <p>⭐ Productos con Rating {">"} 4.5: {typeof productosRatingAlto === "number" ? productosRatingAlto : "No disponible"}</p>
+      {/* Producto más caro y más barato por categoría */}
+      <div className="bg-gray-100 p-4 rounded-lg shadow-md mt-6">
+        <h3 className="text-lg font-semibold text-gray-700 mb-2">💰 Producto más caro y más barato por categoría</h3>
+        {Object.keys(productoMasCaroPorCategoria).map(category => (
+          <p key={category}>
+            <strong>{category}:</strong> 
+            Más caro: {productoMasCaroPorCategoria[category].name} (${productoMasCaroPorCategoria[category].price}) | 
+            Más barato: {productoMasBaratoPorCategoria[category].name} (${productoMasBaratoPorCategoria[category].price})
+          </p>
+        ))}
+      </div>
 
-      <h3>Promedio de Precio por Categoría:</h3>
-      <ul>
-        {Array.isArray(promedioPorCategoria) && promedioPorCategoria.length > 0 ? (
-          promedioPorCategoria.map((item, index) => (
-            <li key={index}>
-              {item?.categoria}: ${typeof item?.promedio === "number" ? item.promedio.toFixed(2) : "No disponible"}
-            </li>
-          ))
-        ) : (
-          <li>No hay datos disponibles.</li>
-        )}
-      </ul>
-
-      <h3>Extremos de Precio por Categoría:</h3>
-      <ul>
-        {Array.isArray(extremosPorCategoria) && extremosPorCategoria.length > 0 ? (
-          extremosPorCategoria.map((item, index) => (
-          <li key={index}>
-          {item?.categoria} - Mín: {item?.masBarato?.name ?? "No disponible"}, Máx: {item?.masCaro?.name ?? "No disponible"}
-          </li>
-          ))
-        ) : (
-          <li>No hay datos disponibles.</li>
-        )}
-      </ul>
-
-      <p>🌟 Promedio de Rating General: {typeof promedioRatingGeneral === "number" ? promedioRatingGeneral.toFixed(2) : "No disponible"}</p>
-
-      <h3>⭐ Rating Promedio por Categoría:</h3>
-      <ul>
-        {Array.isArray(ratingPorCategoria) && ratingPorCategoria.length > 0 ? (
-          ratingPorCategoria.map((item, index) => (
-            <li key={index}>
-              {item?.categoria}: {typeof item?.promedioRating === "number" ? item.promedioRating.toFixed(2) : "No disponible"}
-            </li>
-          ))
-        ) : (
-          <li>No hay datos disponibles.</li>
-        )}
-      </ul>
+      {/* Rating Promedio */}
+      <div className="bg-gray-100 p-4 rounded-lg shadow-md mt-6">
+        <h3 className="text-lg font-semibold text-gray-700 mb-2">⭐ Rating Promedio</h3>
+        <p><strong>General:</strong> {ratingPromedioGeneral}</p>
+        {Object.entries(ratingPromedioPorCategoria).map(([category, rating]) => (
+          <p key={category}><strong>{category}:</strong> Rating Promedio: {rating}</p>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default StatsPanel;
 

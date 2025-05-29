@@ -61,59 +61,6 @@ function App() {
     productosFiltrados.sort((a, b) => b.rating - a.rating);
   }
 
-  {/* Estadísticas */}
-const calcularPromedio = (arr, key) => {
-    const total = arr.reduce((acc, el) => acc + el[key], 0);
-    return arr.length > 0 ? (total / arr.length).toFixed(2) : "No disponible";
-  };
-
-  const precioPromedio = calcularPromedio(productosFiltrados, 'price');
-  const precioMax = productosFiltrados.length > 0 ? Math.max(...productosFiltrados.map(p => p.price)).toFixed(2) : "No disponible";
-  const precioMin = productosFiltrados.length > 0 ? Math.min(...productosFiltrados.map(p => p.price)).toFixed(2) : "No disponible";
-  const promedioRatingGeneral = calcularPromedio(productosFiltrados, 'rating');
-
-  // Estadísticas por categoría
-  const cantidadPorCategoria = categorias.map(cat => ({
-    categoria: cat,
-    cantidad: productosFiltrados.filter(p => p.category === cat).length
-  }));
-
-  const promedioPorCategoria = categorias.map(cat => {
-    const productosCat = productosFiltrados.filter(p => p.category === cat);
-    return {
-      categoria: cat,
-      promedio: productosCat.length ? calcularPromedio(productosCat, 'price') : "No disponible"
-    };
-  });
-
-  const extremosPorCategoria = categorias.map(cat => {
-    const productosCat = productosFiltrados.filter(p => p.category === cat);
-    if (productosCat.length === 0) {
-      return { categoria: cat, masBarato: "No disponible", masCaro: "No disponible" };
-    }
-    const masCaro = Math.max(...productosCat.map(p => p.price));
-    const masBarato = Math.min(...productosCat.map(p => p.price));
-    return {
-      categoria: cat,
-      masCaro: masCaro.toFixed(2),
-      masBarato: masBarato.toFixed(2)
-    };
-  });
-
-  const ratingPorCategoria = categorias.map(cat => {
-    const productosCat = productosFiltrados.filter(p => p.category === cat);
-    return {
-      categoria: cat,
-      promedioRating: productosCat.length ? calcularPromedio(productosCat, 'rating') : "No disponible"
-    };
-  });
-
-  const productosStockMayor50 = productosFiltrados.filter(p => p.stock > 50).length;
-  const productosRatingAlto = productosFiltrados.filter(p => p.rating > 4.5).length;
-
-
-
-
 
   return (
     <div ref={containerRef} className={`app ${darkMode ? "dark-mode" : ""}`}>
@@ -139,16 +86,7 @@ const calcularPromedio = (arr, key) => {
         </div>
       </div>
       <StatsPanel
-       precioPromedio={parseFloat(precioPromedio)}
-  precioMax={parseFloat(precioMax)}
-  precioMin={parseFloat(precioMin)}
-  cantidadPorCategoria={cantidadPorCategoria}
-  productosStockMayor50={productosStockMayor50}
-  productosRatingAlto={productosRatingAlto}
-  promedioPorCategoria={promedioPorCategoria}
-  extremosPorCategoria={extremosPorCategoria}
-  promedioRatingGeneral={parseFloat(promedioRatingGeneral)}
-  ratingPorCategoria={ratingPorCategoria}
+       productosFiltrados={productosFiltrados} 
     />
       <InfoSection darkMode={darkMode} />
       <Footer darkMode={darkMode} />
