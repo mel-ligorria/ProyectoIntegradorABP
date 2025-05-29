@@ -67,6 +67,31 @@ Se agregaron dos componentes nuevos utilizando bloques de Tailblocks para mejora
   - Oculte flechas dobles en `select` usando `appearance-none`.  
   - Mejore la apariencia y estructura de los filtros con `Tailwind CSS`.  
 
+🗓️ Semana 4 – Estadísticas Detalladas  
+**Objetivo**  
+Aplicar procesamiento de datos y estadística básica utilizando funciones de orden superior y condicionales.
+
+**Tareas Realizadas**  
+Se desarrollaron funciones para mostrar estadísticas detalladas sobre los productos obtenidos desde la API:
+
+-  Precio promedio general.
+-  Precio máximo y mínimo general.
+-  Cantidad de productos por categoría.
+-  Cantidad de productos con:
+  - Stock mayor a 50.
+  - Rating mayor a 4.5.
+  - Otros criterios combinados.
+-  Precio promedio por categoría.
+-  Producto más caro y más barato por categoría.
+-  Promedio de rating general y por categoría.
+
+Estas estadísticas se muestran dinámicamente y se actualizan al aplicar filtros de búsqueda, categoría y ordenamiento.
+
+- ✔️ Uso de métodos de alto orden como `map()`, `reduce()`, `filter()`.
+
+Las estadísticas se presentan dentro del componente `StatsPanel`, con diseño claro y accesible, respetando el modo oscuro y los estilos generales definidos con Tailwind CSS
+
+
 
 ## Tecnologías Usadas
 
