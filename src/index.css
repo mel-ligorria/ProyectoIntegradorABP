@@ -81,3 +81,15 @@ footer.dark-mode {
   color: #e0e0e0 !important;
 }
 
+.stats-panel {
+  display: block;
+  padding: 16px;
+  background-color: #f8f9fa; /* Color claro para hacer visible */
+  border: 1px solid #ddd;
+}
+
+.dark-mode .stats-panel {
+  background-color: #222;
+  color: #eee;
+  border: 1px solid #555;
+}
