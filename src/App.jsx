@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './App.css';
 
+
+
 // Componentes
 import Hero from './Components/Hero';
 import InfoSection from './Components/InfoSection';
@@ -9,6 +11,8 @@ import ProductList from './Components/ProductList';
 import Footer from './Components/Footer';
 import SearchBar from './Components/SearchBar';
 import StatsPanel from './Components/StatsPanel';
+import StatsChart from "./Components/StatsChart";
+
 
 function App() {
   // Estados
@@ -75,7 +79,7 @@ function App() {
             search={search} setSearch={setSearch} 
             categorias={categorias} categoriaSeleccionada={categoriaSeleccionada} setCategoriaSeleccionada={setCategoriaSeleccionada}
             ordenSeleccionado={ordenSeleccionado} setOrdenSeleccionado={setOrdenSeleccionado}
-          />
+          darkMode={darkMode} />
 
           {/* Mostrar productos filtrados */}
           {productosFiltrados.length === 0 ? (
@@ -85,9 +89,8 @@ function App() {
           )}
         </div>
       </div>
-      <StatsPanel
-       productosFiltrados={productosFiltrados} 
-    />
+      <StatsPanel productosFiltrados={productosFiltrados} darkMode={darkMode} />
+      <StatsChart productosFiltrados={productosFiltrados} darkMode={darkMode}/>
       <InfoSection darkMode={darkMode} />
       <Footer darkMode={darkMode} />
     </div>

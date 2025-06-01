@@ -67,8 +67,10 @@ Se agregaron dos componentes nuevos utilizando bloques de Tailblocks para mejora
   - Oculte flechas dobles en `select` usando `appearance-none`.  
   - Mejore la apariencia y estructura de los filtros con `Tailwind CSS`.  
 
-🗓️ Semana 4 – Estadísticas Detalladas  
-**Objetivo**  
+## 🗓️ Semana 4 – Estadísticas Detalladas  
+
+### **Objetivo**  
+
 Aplicar procesamiento de datos y estadística básica utilizando funciones de orden superior y condicionales.
 
 **Tareas Realizadas**  
@@ -87,9 +89,29 @@ Se desarrollaron funciones para mostrar estadísticas detalladas sobre los produ
 
 Estas estadísticas se muestran dinámicamente y se actualizan al aplicar filtros de búsqueda, categoría y ordenamiento.
 
-- ✔️ Uso de métodos de alto orden como `map()`, `reduce()`, `filter()`.
+- Uso de métodos de alto orden como `map()`, `reduce()`, `filter()`.
 
 Las estadísticas se presentan dentro del componente `StatsPanel`, con diseño claro y accesible, respetando el modo oscuro y los estilos generales definidos con Tailwind CSS
+
+## 🗓️ **Semana 5 – Visualizaciones**
+
+### Objetivo
+Incluir visualización de datos mediante gráficos simples para facilitar la interpretación de la información procesada.
+
+### Tareas Realizadas
+Se integró la librería [Recharts](https://recharts.org/) para representar visualmente diferentes aspectos de los productos obtenidos desde la API.
+
+Los gráficos implementados son:
+
+- **Gráfico de Barras**: muestra la **cantidad de productos por categoría**.  
+  Se utiliza para visualizar de forma clara cuántos productos pertenecen a cada categoría filtrada.
+
+- **Gráfico de Líneas**: simula la **evolución de precios a lo largo del tiempo**.  
+  Se generaron valores ficticios por producto para representar una variación de precios estimada.
+
+- **Gráfico de Torta (Pie Chart)**: indica la **proporción de productos según el nivel de stock**.  
+  Se agrupan los productos por rangos de stock (bajo, medio, alto) y se representa su proporción relativa.
+
 
 
 

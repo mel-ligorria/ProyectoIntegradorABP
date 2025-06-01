@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StatsPanel = ({ productosFiltrados }) => {
+const StatsPanel = ({ productosFiltrados, darkMode }) => {
   if (!productosFiltrados.length) {
     return <p className="text-center text-gray-600">No hay productos disponibles para calcular estadísticas.</p>;
   }
@@ -55,8 +55,8 @@ const StatsPanel = ({ productosFiltrados }) => {
   });
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">📊 Estadísticas</h2>
+     <div className={`stats-panel ${darkMode ? "dark-mode" : ""} bg-white p-6 rounded-lg shadow-md`}>
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Estadísticas</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Tarjeta de estadísticas generales */}
@@ -71,7 +71,7 @@ const StatsPanel = ({ productosFiltrados }) => {
 
         {/* Tarjeta de estadísticas por categoría */}
         <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-          <h3 className="text-lg font-semibold text-gray-700 mb-2">📌 Por Categoría</h3>
+          <h3 className="text-lg font-semibold text-gray-700 mb-2">Por Categoría</h3>
           {Object.entries(cantidadPorCategoria).map(([category, count]) => (
             <p key={category}><strong>{category}:</strong> {count} productos - Precio Promedio: ${precioPromedioPorCategoria[category]}</p>
           ))}
@@ -80,7 +80,7 @@ const StatsPanel = ({ productosFiltrados }) => {
 
       {/* Producto más caro y más barato por categoría */}
       <div className="bg-gray-100 p-4 rounded-lg shadow-md mt-6">
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">💰 Producto más caro y más barato por categoría</h3>
+        <h3 className="text-lg font-semibold text-gray-700 mb-2">Producto más caro y más barato por categoría</h3>
         {Object.keys(productoMasCaroPorCategoria).map(category => (
           <p key={category}>
             <strong>{category}:</strong> 
@@ -92,7 +92,7 @@ const StatsPanel = ({ productosFiltrados }) => {
 
       {/* Rating Promedio */}
       <div className="bg-gray-100 p-4 rounded-lg shadow-md mt-6">
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">⭐ Rating Promedio</h3>
+        <h3 className="text-lg font-semibold text-gray-700 mb-2">Rating Promedio</h3>
         <p><strong>General:</strong> {ratingPromedioGeneral}</p>
         {Object.entries(ratingPromedioPorCategoria).map(([category, rating]) => (
           <p key={category}><strong>{category}:</strong> Rating Promedio: {rating}</p>

@@ -1,6 +1,6 @@
-function SearchBar({ search, setSearch, categorias, categoriaSeleccionada, setCategoriaSeleccionada, ordenSeleccionado, setOrdenSeleccionado }) {
+function SearchBar({ search, setSearch, categorias, categoriaSeleccionada, setCategoriaSeleccionada, ordenSeleccionado, setOrdenSeleccionado, darkMode }) {
   return (
-    <div className="search-bar flex flex-col gap-4">
+    <div className={`search-bar flex flex-col gap-4 ${darkMode ? "dark-mode" : ""}`}>
       {/* Input de búsqueda */}
       <input
         type="text"

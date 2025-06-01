@@ -1,3 +1,4 @@
+/* Estilos generales */
 .app {
   min-height: 100vh;
   background-color: white;
@@ -5,11 +6,13 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Modo oscuro para la aplicación */
 .app.dark-mode {
   background-color: #121212;
   color: #e0e0e0;
 }
 
+/* Estilos de botones */
 button {
   background-color: white;
   color: black;
@@ -26,7 +29,8 @@ button {
   border-color: #eee;
 }
 
-input {
+/* Estilos de input y select */
+input, select {
   background-color: white;
   color: black;
   border: 1px solid #ccc;
@@ -35,61 +39,62 @@ input {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.app.dark-mode input {
+.app.dark-mode input,
+.app.dark-mode select {
   background-color: #222;
   color: #eee;
   border-color: #555;
 }
 
-/* Evitar clases como bg-gray-100 que fijen fondo claro en tus divs, o sobreescribilas: */
-.content {
-  background-color: inherit;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Otros estilos para texto, links, etc, si tenés */
-a {
-  color: blue;
-  transition: color 0.3s ease;
-}
-
-.app.dark-mode a {
-  color: #bb86fc;
-}
-
-.hero.dark-mode {
+/* Estilos de SearchBar en modo oscuro */
+.dark-mode .search-bar {
   background-color: #222;
   color: #eee;
+  padding: 12px;
+  border-radius: 8px;
 }
 
-footer.dark-mode {
-  background-color: #121212 !important;
-  color: #e0e0e0 !important;
+/* Ajustar los inputs y selects dentro de SearchBar */
+.dark-mode .search-bar input,
+.dark-mode .search-bar select {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
 }
 
-.dark-mode .product-card {
-  background-color: #1e1e1e !important;
-  color: #e0e0e0 !important;
+/* Mejorar visibilidad de los select */
+.dark-mode select {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
 }
 
-.dark-mode .product-price {
-  color: #80e27e !important;
+/* Asegurar contraste en los textos */
+.dark-mode .search-bar label,
+.dark-mode .search-bar option {
+  color: #fff;
 }
 
-.app.dark-mode {
-  background-color: #121212 !important;
-  color: #e0e0e0 !important;
-}
-
-.stats-panel {
-  display: block;
-  padding: 16px;
-  background-color: #f8f9fa; /* Color claro para hacer visible */
-  border: 1px solid #ddd;
-}
-
-.dark-mode .stats-panel {
+/* Ajustes para StatsPanel y StatsChart en modo oscuro */
+.dark-mode .stats-panel,
+.dark-mode .stats-chart {
   background-color: #222;
   color: #eee;
   border: 1px solid #555;
 }
+
+.dark-mode .stats-panel div,
+.dark-mode .stats-chart div {
+  background-color: #181818;
+  border-color: #444;
+}
+
+.dark-mode h2, .dark-mode h3, .dark-mode p {
+  color: #ffffff !important;
+}
+
+.dark-mode .stats-panel p,
+.dark-mode .stats-panel strong {
+  color: #ddd !important;
+}
+
