@@ -113,6 +113,23 @@ Los gráficos implementados son:
   Se agrupan los productos por rangos de stock (bajo, medio, alto) y se representa su proporción relativa.
 
 
+## 🗓️ Semana 6 – Exportación y Experiencia de Usuario  
+
+### **Objetivo**  
+
+Añadir funciones de exportación y mejorar la experiencia del usuario mediante optimizaciones en la usabilidad.
+
+### **Tareas Realizadas**  
+
+Se implementaron nuevas características enfocadas en mejorar la interacción y la exportación de datos:
+
+- **Exportación de productos filtrados** a los formatos JSON y CSV utilizando `Blob` y `URL.createObjectURL()`, eliminando dependencias externas.
+- **Implementación de paginación** mediante parámetros `limit` y `skip` en la API, garantizando una carga eficiente de datos.
+- **Optimización en la interfaz de paginación**, deshabilitando el botón de "Página siguiente" cuando no hay más productos disponibles.
+- **Mensajes de éxito** tras cada exportación, brindando retroalimentación clara al usuario.
+- **Mejoras en la jerarquía visual**, asegurando una presentación clara y organizada de los productos y estadísticas.
+- **Optimización en tiempo de carga**, reduciendo el volumen de datos solicitados y manteniendo un flujo eficiente.
+
 
 
 ## Tecnologías Usadas

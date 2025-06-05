@@ -7,7 +7,7 @@ ChartJS.register(BarElement, LineElement, ArcElement, PointElement, CategoryScal
 const StatsChart = ({ productosFiltrados, darkMode }) => {
   if (!productosFiltrados.length) return <p className="text-center text-gray-600">No hay datos disponibles.</p>;
 
-  // Cantidad de productos por categoría (Gráfico de Barras)
+  // Cantidad de productos por categoría (gráfico de Barras)
   const categorias = [...new Set(productosFiltrados.map(product => product.category))];
   const cantidadPorCategoria = categorias.map(category => productosFiltrados.filter(product => product.category === category).length);
 
@@ -16,7 +16,7 @@ const StatsChart = ({ productosFiltrados, darkMode }) => {
     datasets: [{ label: "Cantidad de productos", data: cantidadPorCategoria, backgroundColor: ["#f87171", "#4ade80", "#60a5fa"], borderRadius: 8 }],
   };
 
-  // Simulación de evolución de precios (Gráfico de Líneas)
+  // Simulación de evolución de precios (gráfico de Líneas)
   const labelsLinea = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"];
   const datasetsLinea = productosFiltrados.slice(0, 5).map(product => ({
     label: product.title,

@@ -27,21 +27,21 @@ function App() {
   // Referencias
   const containerRef = useRef(null);
 
-  // Cargar el total de productos en la API
+  // Carga el total de productos en la API
   useEffect(() => {
     axios.get("https://dummyjson.com/products")
       .then(res => setTotalProducts(res.data.total))
       .catch(err => console.error("Error al obtener total de productos:", err));
   }, []);
 
-  // Cargar productos con paginación desde la API
+  // Carga productos con paginación desde la API
   useEffect(() => {
     axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${(page - 1) * limit}`)
       .then(res => setProducts(res.data.products))
       .catch(err => console.error('Error al cargar productos:', err));
   }, [page]); // Se ejecuta cada vez que `page` cambia
 
-  // Cargar categorías al iniciar la aplicación
+  // Carga de categorías al iniciar la aplicación
   useEffect(() => {
     axios.get("https://dummyjson.com/products/categories")
       .then(res => setCategorias(res.data))
@@ -70,7 +70,7 @@ function App() {
     productosFiltrados.sort((a, b) => b.rating - a.rating);
   }
 
-  // 📌 **Funciones de exportación sin librerías**
+  //Funciones de exportación
   const exportToJSON = () => {
     const jsonData = JSON.stringify(productosFiltrados, null, 2);
     const blob = new Blob([jsonData], { type: "application/json" });

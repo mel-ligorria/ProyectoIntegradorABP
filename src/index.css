@@ -54,7 +54,7 @@ input, select {
   border-radius: 8px;
 }
 
-/* Ajustar los inputs y selects dentro de SearchBar */
+/* Ajusta los inputs y selects dentro de SearchBar */
 .dark-mode .search-bar input,
 .dark-mode .search-bar select {
   background-color: #333;
@@ -62,14 +62,14 @@ input, select {
   border-color: #555;
 }
 
-/* Mejorar visibilidad de los select */
+/* Mejora visibilidad de los select */
 .dark-mode select {
   background-color: #333;
   color: #fff;
   border: 1px solid #555;
 }
 
-/* Asegurar contraste en los textos */
+/* Asegura contraste en los textos */
 .dark-mode .search-bar label,
 .dark-mode .search-bar option {
   color: #fff;
