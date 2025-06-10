@@ -11,6 +11,7 @@ import SearchBar from './Components/SearchBar';
 import StatsPanel from './Components/StatsPanel';
 import StatsChart from "./Components/StatsChart";
 
+
 function App() {
   // Estados
   const [products, setProducts] = useState([]);
@@ -23,6 +24,8 @@ function App() {
   const [page, setPage] = useState(1); // Estado de paginación
   const [totalProducts, setTotalProducts] = useState(0); // Total de productos en la API
   const limit = 10; // Número de productos por página
+  const [verEstadisticas, setVerEstadisticas] = useState(false);
+
 
   // Referencias
   const containerRef = useRef(null);
@@ -142,9 +145,16 @@ function App() {
           </div>
         </div>
       </div>
+      <button onClick={() => setVerEstadisticas(!verEstadisticas)}>
+      {verEstadisticas ? "Ocultar estadísticas" : "Mostrar estadísticas"}
+      </button>
 
-      <StatsPanel productosFiltrados={productosFiltrados} darkMode={darkMode} />
-      <StatsChart productosFiltrados={productosFiltrados} darkMode={darkMode}/>
+    {verEstadisticas && (
+    <>
+    <StatsPanel productosFiltrados={productosFiltrados} darkMode={darkMode} />
+    <StatsChart productosFiltrados={productosFiltrados} darkMode={darkMode} />
+    </>
+    )}
       <InfoSection darkMode={darkMode} />
       <Footer darkMode={darkMode} />
     </div>
