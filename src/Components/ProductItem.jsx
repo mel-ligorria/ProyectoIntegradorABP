@@ -13,6 +13,9 @@ const ProductItem = ({ product, darkMode }) => {
       <p className={`font-semibold ${darkMode ? "text-green-300" : "text-green-600"}`}>
         ${product.price}
       </p>
+      <p className={`font-semibold ${darkMode ? "text-yellow-300" : "text-yellow-600"}`}>
+        {product.rating}⭐
+      </p>
     </div>
   );
 };

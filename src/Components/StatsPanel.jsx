@@ -32,3 +32,5 @@ const StatsPanel = ({ productosFiltrados, darkMode }) => {
 
 export default StatsPanel;
 
+
+

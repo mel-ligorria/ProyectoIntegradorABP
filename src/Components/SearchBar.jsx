@@ -3,6 +3,7 @@ function SearchBar({ search, setSearch, categorias, categoriaSeleccionada, setCa
     <div className={`search-bar flex flex-col gap-4 ${darkMode ? "dark-mode" : ""}`}>
       {/* Input de búsqueda */}
       <input
+        key="input-search"
         type="text"
         placeholder="Buscar producto..."
         value={search}
@@ -11,22 +12,20 @@ function SearchBar({ search, setSearch, categorias, categoriaSeleccionada, setCa
       />
 
       {/* Select de categorías */}
-        <select value={categoriaSeleccionada} onChange={(e) => setCategoriaSeleccionada(e.target.value)}>
+        <select key="categories" value={categoriaSeleccionada} onChange={(e) => setCategoriaSeleccionada(e.target.value)}>
         <option value="">Todas las categorías</option>
         {categorias.map((cat) => (
         <option key={cat.slug} value={cat.slug}>{cat.name}</option>
         ))}
         </select>
 
-
-
       {/* Select de ordenamiento */}
-        <select value={ordenSeleccionado} onChange={(e) => setOrdenSeleccionado(e.target.value)} className="appearance-none p-2 border rounded bg-white">
-        <option value="">Sin orden</option>
-        <option value="precio-asc">Precio ↑</option>
-        <option value="precio-desc">Precio ↓</option>
-        <option value="rating-asc">Rating ⭐ ↑</option>
-        <option value="rating-desc">Rating ⭐ ↓</option>
+        <select key="ordering" value={ordenSeleccionado} onChange={(e) => setOrdenSeleccionado(e.target.value)}>
+          <option value="">Sin orden</option>
+          <option value="precio-asc">Precio Ascedente</option>
+          <option value="precio-desc">Precio Descendente</option>
+          <option value="rating-asc">Rating ⭐ Ascedente </option>
+          <option value="rating-desc">Rating ⭐ Descendente</option>
         </select>
 
     </div>
