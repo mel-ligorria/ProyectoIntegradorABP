@@ -1,6 +1,6 @@
 function Hero({ darkMode }) {
   return (
-    <section className={`body-font py-16 ${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-700"}`}>
+    <section className={`body-font py-16 ${darkMode ? "bg-gray-900 text-white" : "bg-blue-50 text-gray-700"}`}>
       <div className="container mx-auto flex px-5 items-center justify-center flex-col">
         <h1 className={`title-font sm:text-5xl text-4xl mb-4 font-bold text-center ${darkMode ? "text-purple-300" : "text-blue-600"}`}>
           Proyecto Integrador
